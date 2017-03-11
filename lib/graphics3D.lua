@@ -27,3 +27,13 @@ function graphics3D.polygon(mode, ...)
 	end
 	love.graphics.polygon(mode, verts)
 end
+
+function graphics3D.circle(mode, v3, radius, segments)
+	local v2 = graphics3D.to2D(v3)
+	local surface = v3 + Vector3(0,radius,0)
+	local surface2d = graphics3D.to2D(surface)
+
+	local radius2d = v2:dist(surface2d)
+
+	love.graphics.circle(mode, v2.x, v2.y, radius2d, segments)
+end

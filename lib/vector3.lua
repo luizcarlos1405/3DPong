@@ -24,4 +24,8 @@ function Vector3.__sub(a,b)
 end
 
 
+function Vector3.__mul(a,b)
+	return new(a.x*b, a.y*b, a.z*b)
+end
+
 setmetatable(Vector3, {__call = function(_, ...) return new(...) end})

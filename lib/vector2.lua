@@ -71,7 +71,7 @@ function Vector2.magnitude(a)
 end
 
 function Vector2.dist(a,b)
-	assert(a:isVector() and b:isVector(), "Vector expected; Got "..type(a).." and "..type(b))
+	--assert(a:isVector() and b:isVector(), "Vector expected; Got "..type(a).." and "..type(b))
 	return math.sqrt(math.pow(a.x-b.x,2)+math.pow(a.y-b.y,2))
 end
 

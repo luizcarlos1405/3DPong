@@ -5,14 +5,14 @@ function padController:init(p)
 end
 
 function padController:update(p,dt)
-	local newPos = Vector3(clamp(love.mouse.getX() - p.pad.size.x/2, 0, love.graphics.getWidth()-p.pad.size.x), clamp(love.mouse.getY() - p.pad.size.y/2, 0, love.graphics.getHeight()-p.pad.size.y), p.pad.pos.z)
+	local newPos = Vector3(clamp(love.mouse.getX() - p.pad.size.x/2, 0, love.graphics.getWidth()-p.pad.size.x), clamp(love.mouse.getY() - p.pad.size.y/2, 0, love.graphics.getHeight()-p.pad.size.y), p.pos.z)
 	
 	
 
-	p.pad.diff.x = approach((newPos - p.pad.pos).x, p.pad.diff.x, dt*5)
-	p.pad.diff.y = approach((newPos - p.pad.pos).y, p.pad.diff.y, dt*5)
+	p.pad.diff.x = approach((newPos - p.pos).x, p.pad.diff.x, dt*5)
+	p.pad.diff.y = approach((newPos - p.pos).y, p.pad.diff.y, dt*5)
 
-	p.pad.pos = newPos
+	p.pos = newPos
 
 end
 
@@ -40,8 +40,8 @@ function padController:draw(p)
 	love.graphics.setColor(p.pad.color:value())
 	
 	graphics3D.polygon("fill", 
-		p.pad.pos + Vector3(0,0,(p.pad.diff.x+p.pad.diff.y)/sensitivity), 
-		p.pad.pos + Vector3(p.pad.size.x, 0, (-p.pad.diff.x+p.pad.diff.y)/sensitivity), 
-		p.pad.pos + Vector3(p.pad.size.x, p.pad.size.y, (-p.pad.diff.x-p.pad.diff.y)/sensitivity),
-		p.pad.pos + Vector3(0, p.pad.size.y, (p.pad.diff.x-p.pad.diff.y)/sensitivity))
+		p.pos + Vector3(0,0,(p.pad.diff.x+p.pad.diff.y)/sensitivity), 
+		p.pos + Vector3(p.pad.size.x, 0, (-p.pad.diff.x+p.pad.diff.y)/sensitivity), 
+		p.pos + Vector3(p.pad.size.x, p.pad.size.y, (-p.pad.diff.x-p.pad.diff.y)/sensitivity),
+		p.pos + Vector3(0, p.pad.size.y, (p.pad.diff.x-p.pad.diff.y)/sensitivity))
 end
