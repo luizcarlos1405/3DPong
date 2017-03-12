@@ -11,7 +11,7 @@ require(BASE..".script")
 
 require(BASE..".components")
 
-R = require("lib.ResourceManager")
+R = require("lib.resourceManager")
 
 cCore = {}
 

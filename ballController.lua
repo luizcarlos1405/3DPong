@@ -12,9 +12,9 @@ function ballController:update(b, dt)
 		b.pos.y = clamp(b.pos.y, b.ball.size, lg.getHeight()-b.ball.size)
 	end
 
-	if b.pos.z>4  or b.pos.z<1 then
+	if b.pos.z<b.ball.size  or b.pos.z>b.ball.wall.size-b.ball.size then
 		b.ball.direction.z = -b.ball.direction.z
-		b.pos.z = clamp(b.pos.z, 1, 4)
+		b.pos.z = clamp(b.pos.z, b.ball.size, b.ball.wall.size-b.ball.size)
 	end
 
 	b.pos = b.pos + b.ball.direction*b.ball.speed*dt
@@ -24,5 +24,12 @@ end
 function ballController:draw(b)
 	lg.setColor(Color(255,255,255):value())
 	graphics3D.circle("fill", b.pos, b.ball.size)
+
+
+love.graphics.setColor(Color.blue:value())
+	graphics3D.polygon("line", b.pos.z, Vector3(0,0,b.pos.z), 
+			Vector3(W,0,b.pos.z),
+			Vector3(W,H,b.pos.z),
+			Vector3(0,H,b.pos.z))
 	
 end

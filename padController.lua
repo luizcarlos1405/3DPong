@@ -21,7 +21,7 @@ function clamp(n, min, max)
 	return math.max(math.min(n, max), min)
 end
 
-local sensitivity = 25
+local sensitivity = 0.3
 
 function approach(fim,atual,dt)
 	local falta = fim-atual
@@ -39,7 +39,7 @@ function padController:draw(p)
 
 	love.graphics.setColor(p.pad.color:value())
 	
-	graphics3D.polygon("fill", 
+	graphics3D.polygon("fill", p.pos.z, 
 		p.pos + Vector3(0,0,(p.pad.diff.x+p.pad.diff.y)/sensitivity), 
 		p.pos + Vector3(p.pad.size.x, 0, (-p.pad.diff.x+p.pad.diff.y)/sensitivity), 
 		p.pos + Vector3(p.pad.size.x, p.pad.size.y, (-p.pad.diff.x-p.pad.diff.y)/sensitivity),
