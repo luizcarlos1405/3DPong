@@ -6,7 +6,7 @@ require("lib.vector2")
 
 require(BASE..".coisa")
 require(BASE..".scene")
-require(BASE..".component")
+require(BASE..".Component")
 require(BASE..".script")
 
 require(BASE..".components")
