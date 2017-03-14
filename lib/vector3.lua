@@ -28,4 +28,9 @@ function Vector3.__mul(a,b)
 	return new(a.x*b, a.y*b, a.z*b)
 end
 
+function Vector3.normalized(a)
+    local n = math.sqrt(math.pow(a.x,2) + math.pow(a.y,2) + math.pow(a.z,2))
+    return new(a.x/n, a.y/n, a.z/n)
+end
+
 setmetatable(Vector3, {__call = function(_, ...) return new(...) end})

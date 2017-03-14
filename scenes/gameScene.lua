@@ -3,12 +3,14 @@ local gameZ = 800
 
 Wall = Component("wall", {size = gameZ})
 Pos3D = Component("pos", Vector3())
-Pad = Component("pad", {size = Vector2(), color = Color(50,50,250,200)})
+Box = Component("box", {size = Vector3(), angles = Vector3(0, 0, 0), vectors = {}})
+Pad = Component("pad", {color = Color(50,50,250,200)})
 Ball = Component("ball", {direction = Vector3(), speed = 20, size = 40, wall = {}})
 
 require "wallRenderer"
 require "padController"
 require "ballController"
+require "boxSetup"
 gameScene = Scene("game")
 
 
@@ -28,17 +30,16 @@ function gameScene:init()
 	opponentPad = Coisa("IAPad", {
 			Pos3D(Vector3(love.graphics.getWidth()/2, love.graphics.getHeight()/2, gameZ)),
 			Pad({
-				size = Vector2(250,150),
 				color = Color(250,50,50,200)
-			})
+			}),
+            Box({size = Vector3(250, 150, 20)})
 		})
 
 
 	playerPad = Coisa("playerPad", {
-			Pos3D(Vector3(love.graphics.getWidth()/2, love.graphics.getHeight()/2, 1)),
-			Pad({
-				size = Vector2(250,150)
-			})
+			Pos3D(Vector3(love.graphics.getWidth()/2, love.graphics.getHeight()/2, 20)),
+			Pad({}),
+            Box({size = Vector3(250, 150, 20)})
 		})
 
 
